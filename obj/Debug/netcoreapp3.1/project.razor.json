@@ -14427,6 +14427,21 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Luis Fernando\\Desktop\\ATV01_github\\Biblioteca\\Views\\Usuario\\ExcluirUsuario.cshtml",
+      "TargetPath": "Views\\Usuario\\ExcluirUsuario.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Luis Fernando\\Desktop\\ATV01_github\\Biblioteca\\Views\\Usuario\\Listagem.cshtml",
+      "TargetPath": "Views\\Usuario\\Listagem.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Luis Fernando\\Desktop\\ATV01_github\\Biblioteca\\Views\\Usuario\\NeedAdmin.cshtml",
+      "TargetPath": "Views\\Usuario\\NeedAdmin.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Luis Fernando\\Desktop\\ATV01_github\\Biblioteca\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
@@ -14452,8 +14467,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Luis Fernando\\Desktop\\ATV01_github\\Biblioteca\\Views\\Usuario\\EditarUsuario.cshtml",
+      "TargetPath": "Views\\Usuario\\EditarUsuario.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Luis Fernando\\Desktop\\ATV01_github\\Biblioteca\\Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Luis Fernando\\Desktop\\ATV01_github\\Biblioteca\\Views\\Usuario\\Cadastro.cshtml",
+      "TargetPath": "Views\\Usuario\\Cadastro.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14464,6 +14489,11 @@
     {
       "FilePath": "c:\\Users\\Luis Fernando\\Desktop\\ATV01_github\\Biblioteca\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Luis Fernando\\Desktop\\ATV01_github\\Biblioteca\\Views\\Usuario\\CorfimacaodeUsuario.cshtml",
+      "TargetPath": "Views\\Usuario\\CorfimacaodeUsuario.cshtml",
       "FileKind": "mvc"
     },
     {

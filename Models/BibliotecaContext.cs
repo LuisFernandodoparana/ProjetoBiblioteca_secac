@@ -12,5 +12,8 @@ namespace Biblioteca.Models
 
         public DbSet<Livro> Livros {get; set;}
         public DbSet<Emprestimo> Emprestimos {get; set;}
+        public DbSet<Usuario> Usuarios {get; set;}
+
+        //o codigo DbSet cria a tabela no banco de dados, com o nome usuario, com base na classe <usuario> 
     }
 }

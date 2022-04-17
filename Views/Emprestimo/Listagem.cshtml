@@ -1,6 +1,13 @@
 @model ICollection<Emprestimo>
 @{
     ViewData["Title"] = "Listagem de Empréstimos";
+    int filtroPorPag = Int32.Parse(ViewData["EmprestimosPorPagina"].ToString());
+    int paginaAtual = Int32.Parse(ViewData["paginaAtual"].ToString());
+
+    int numEmprestimosPorPag = (Model.Count < filtroPorPag ? Model.Count : filtroPorPag );
+
+    int numTotalPag = Model.Count/numEmprestimosPorPag + (Model.Count %  numEmprestimosPorPag == 0 ? 0 : 1 );
+    string Classe = "";
 }
 
 <div class="row">
@@ -8,14 +15,31 @@
     <form class="form-inline" method="POST">
         <div class="form-group mb-2">
             <select name="TipoFiltro" class="form-control">
-                <option value="Usuario">Usuário</option>
+                <option value="NomeUsuario">Usuario</option>
                 <option value="Livro">Livro</option>
             </select>
         </div>
         <div class="form-group mb-2 mx-sm-3">
             <input type="text" placeholder="Filtro" name="Filtro" class="form-control" />
         </div>
+        <div>
+            <select name="itensPorPagina" id="itensPorPagina">
+                <option value="3">3</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="@Model.Count">Todos</option>
+            </select>
+        </div>
         <button type="submit" class="btn btn-primary mb-2">Pesquisar</button>
+        <div id="SeletorPaginas">
+            <samp>Páginas:</samp>
+            @for(int i = 1; i <= numTotalPag; i++)
+            {
+                <span>
+                    <a href="/Emprestimo/Listagem?paginaAtual=@i">@i,</a>
+                </span>
+            }
+        </div>
     </form>
     </div>
 </div>
@@ -36,9 +60,22 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @for(int i = (paginaAtual - 1) * numEmprestimosPorPag; i < (numEmprestimosPorPag * paginaAtual < Model.Count ? numEmprestimosPorPag * paginaAtual : Model.Count); i++)
+                    {
                     @foreach(Emprestimo e in Model)
                     {
-                    <tr>
+                        @if((System.DateTime.Compare(System.DateTime.Now, e.DataDevolucao) > 0))
+                        {
+                            
+                            
+                            Classe = "text-danger"; 
+                    
+                        }
+                        else
+                        {
+                            Classe = "";
+                        }
+                    <tr class="@Classe">
                         <td>@e.Id</td>
                         <td>@e.NomeUsuario</td>
                         <td>@e.DataEmprestimo.ToString("dd/MM/yyyy")</td>
@@ -47,6 +84,7 @@
                         <td>@e.Livro.Autor</td>
                         <td><a href="/Emprestimo/Edicao/@e.Id">Editar</a></td>
                     </tr>
+                    }
                     }
                 </tbody>
             </table>

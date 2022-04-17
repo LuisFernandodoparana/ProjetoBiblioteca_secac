@@ -25,6 +25,7 @@ namespace Biblioteca.Models
                 emprestimo.LivroId = e.LivroId;
                 emprestimo.DataEmprestimo = e.DataEmprestimo;
                 emprestimo.DataDevolucao = e.DataDevolucao;
+                emprestimo.Devolvido = e.Devolvido;
 
                 bc.SaveChanges();
             }
@@ -41,7 +42,7 @@ namespace Biblioteca.Models
                     //definindo dinamicamente a filtragem
                     switch(filtro.TipoFiltro)
                     {
-                        case "Usuário":
+                        case "Usuario":
                             query = bc.Emprestimos.Where(e => e.NomeUsuario.Contains(filtro.Filtro));
                         break;
 
@@ -59,19 +60,7 @@ namespace Biblioteca.Models
                     // caso filtro não tenha sido informado
                     query = bc.Emprestimos;
                 }
-                return bc.Emprestimos.Include(e => e.Livro).ToList();
-            }
-        }
-        public ICollection<Emprestimo> ListarDisponiveis()
-        {
-            using(BibliotecaContext bc = new BibliotecaContext())
-            {
-                //busca os livros onde o id não está entre os ids de livro em empréstimo
-                // utiliza uma subconsulta
-                return
-                    bc.Emprestimos
-                    .Where(l =>  !(bc.Emprestimos.Where(e => e.Devolvido == false).Select(e => e.LivroId).Contains(l.Id)) )
-                    .ToList();
+                return  query.OrderByDescending(e => e.DataDevolucao).Include(e => e.Livro).ToList();
             }
         }
         public Emprestimo ObterPorId(int id)

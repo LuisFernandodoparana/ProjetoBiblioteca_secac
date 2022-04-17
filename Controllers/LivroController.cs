@@ -28,7 +28,7 @@ namespace Biblioteca.Controllers
             return RedirectToAction("Listagem");
         }
 
-        public IActionResult Listagem(string tipoFiltro, string filtro)
+        public IActionResult Listagem(string tipoFiltro, string filtro, string itensPorPagina, int NumDaPagina, int paginaAtual)
         {
             Autenticacao.CheckLogin(this);
             FiltrosLivros objFiltro = null;
@@ -38,6 +38,11 @@ namespace Biblioteca.Controllers
                 objFiltro.Filtro = filtro;
                 objFiltro.TipoFiltro = tipoFiltro;
             }
+
+            ViewData["livrosPorPagina"] = (string.IsNullOrEmpty(itensPorPagina) ? 10 : int.Parse(itensPorPagina));
+            // Se itensPorPag for nulo ou vazio, entao a quantidade de itens por pagina é 10. Caso contrario ela definira de acordo com a marcação.
+             ViewData["paginaAtual"] = (paginaAtual != 0 ? paginaAtual : 1);
+            // Se pagina atual for diferente de 0 então vc esta na pagina 1.
             LivroService livroService = new LivroService();
             return View(livroService.ListarTodos(objFiltro));
         }

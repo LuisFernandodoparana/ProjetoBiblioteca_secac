@@ -1,0 +1,36 @@
+@model Usuario
+
+
+
+<h1>Registre um usuário</h1>
+
+
+
+<form action="Cadastro" method="post"class="col-md-4">
+    <div class="form-group">
+        <label asp-for="Nome">Nome</label>
+        <input type="text" asp-for="Nome" id="userNome" class="form-control" placeholder="Nome">
+    </div>
+    <div class="form-group">
+        <label asp-for="Login">Login</label>
+        <input type="text" asp-for="Login" id="userLogin" class="form-control" placeholder="Login">
+    </div>
+    <div class="form-group">
+        <label asp-for="Senha">Senha</label>
+        <input type="text" asp-for="Senha" id="userSenha" class="form-control" placeholder="Senha">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Tipo">Tipo</label>
+        <select asp-for="Tipo" id="userTipo" class="form-control">
+            <option value="@Usuario.Admin">Administrador</option>
+
+            <option value="@Usuario.Padrao">Padrão</option>
+        </select>
+    </div>
+
+
+
+    <input type="submit" value="REGISTRAR" class="btn btn-primary">
+
+</form>
